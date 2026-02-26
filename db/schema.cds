@@ -34,3 +34,9 @@ entity OrderItems: cuid {
     state : String;
     country : String;
   }
+
+  entity BusinessPartners{
+    ID : UUID;
+    SupplierName : String;
+    City : String;
+  }

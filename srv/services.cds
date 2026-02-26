@@ -12,6 +12,8 @@ case currency.code
   //  @readonly entity Authors as projection on database.Authors ;
 
   @readonly entity AddressSrv as projection on database.Address;
+
+  @readonly entity SupplierSrv as projection on database.BusinessPartners;
 }
 service OrdersService {
     entity Orders as projection on database.Orders;
