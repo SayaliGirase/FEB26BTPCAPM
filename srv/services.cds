@@ -10,6 +10,8 @@ case currency.code
      category as genre} excluding {createdAt, createdBy, modifiedAt, modifiedBy };
 
   //  @readonly entity Authors as projection on database.Authors ;
+
+  @readonly entity AddressSrv as projection on database.Address;
 }
 service OrdersService {
     entity Orders as projection on database.Orders;
