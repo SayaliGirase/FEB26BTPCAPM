@@ -27,16 +27,3 @@ entity OrderItems: cuid {
       amount : Integer ;
       netAmount : Decimal(10,2)
   }
-  
-  entity Address{
-    address : String;
-    city: String;
-    state : String;
-    country : String;
-  }
-
-  entity BusinessPartners{
-    ID : UUID;
-    SupplierName : String;
-    City : String;
-  }

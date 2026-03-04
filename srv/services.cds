@@ -9,18 +9,37 @@ case currency.code
     end as CDESC : String(20) @title: '{i18n>CURRENCY}',
      category as genre} excluding {createdAt, createdBy, modifiedAt, modifiedBy };
 
-  //  @readonly entity Authors as projection on database.Authors ;
-
-  @readonly entity AddressSrv as projection on database.Address;
-
-  @readonly entity SupplierSrv as projection on database.BusinessPartners;
+    @readonly entity Authors as projection on database.Authors ;
 }
 service OrdersService {
+@restrict: [
+  {
+    grant: '*',
+    to: 'Admin'
+  },
+  {
+    grant: '*',
+    where: 'createdBy = $user'
+  }
+]
     entity Orders as projection on database.Orders;
+    
+@restrict: [
+  {
+    grant: '*',
+    to: 'Admin'
+  },
+  {
+    grant: '*',
+    where: 'parent.createdBy = $user'
+  }
+]
     entity OrderItems as projection on database.OrderItems ;
+
 }
 
 using { AdminService } from '../node_modules/@sap/product-service-cds/srv/admin-service';
 extend service AdminService with {
     entity Authors as projection on database.Authors ;
 }
+annotate AdminService with @(requires:'Admin');
